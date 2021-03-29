@@ -1,0 +1,40 @@
+{
+  "name": "mazahaler/project-connection-checker",
+  "description": "The extension allows to check connection to db, mail operation and secrets.json for compliance",
+  "keywords": [
+    "connection",
+    "checker"
+  ],
+  "homepage": "https://github.com/mazahaler/ProjectConnectionChecker",
+  "type": "extension",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Vladislav Kharlanchuk",
+      "homepage": "https://t.me/mazahaler"
+    }
+  ],
+  "support": {
+    "source": "https://github.com/mazahaler/ProjectConnectionChecker"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {},
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "KebaCorp\\VaultSecret\\": "src",
+      "app\\": ""
+    }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}
