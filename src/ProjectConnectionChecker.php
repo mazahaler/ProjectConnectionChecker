@@ -1,6 +1,6 @@
 <?php
 
-namespace app\commands;
+namespace mazahaler\ProjectConnectionChecker;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
