@@ -18,7 +18,7 @@ class ProjectConnectionChecker
      * @param $from
      * @param $to
      */
-    public static function checkAll(string $rootPath, array $dbConnections = [], MailerInterface $mailer, string $from = 'quality@telecontact.ru', string $to = 'v.xarlanchuk@telecontact.ru')
+    public static function checkAll(string $rootPath, MailerInterface $mailer, array $dbConnections = [], string $from = 'quality@telecontact.ru', string $to = 'v.xarlanchuk@telecontact.ru')
     {
         self::checkSecrets($rootPath);
         self::checkMailing($mailer, $from, $to);
