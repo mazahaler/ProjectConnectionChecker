@@ -18,9 +18,9 @@ class ProjectConnectionChecker
      * @param $from
      * @param $to
      */
-    public static function checkAll(string $rootPath, MailerInterface $mailer, array $dbConnections = [], string $from = 'quality@telecontact.ru', string $to = 'v.xarlanchuk@telecontact.ru')
+    public static function checkAll(string $rootPath, string $secretsPath, MailerInterface $mailer, array $dbConnections = [], string $from = 'quality@telecontact.ru', string $to = 'v.xarlanchuk@telecontact.ru')
     {
-        self::checkSecrets($rootPath);
+        self::checkSecrets($rootPath, $secretsPath);
         self::checkMailing($mailer, $from, $to);
         self::checkConnections($dbConnections);
     }
@@ -30,9 +30,9 @@ class ProjectConnectionChecker
      * Check secrets
      * @param string $rootPath
      */
-    public static function checkSecrets(string $rootPath)
+    public static function checkSecrets(string $rootPath, string $secretsPath)
     {
-        new SecretsChecker($rootPath);
+        new SecretsChecker($rootPath, $secretsPath);
     }
 
     /**
