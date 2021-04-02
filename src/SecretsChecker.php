@@ -33,13 +33,21 @@ class SecretsChecker extends ProjectChecker
     private string $_rootPath = '';
 
     /**
+     * Full path to secrets.json
+     * @var string
+     */
+    private string $_secretPath = '';
+
+    /**
      * SecretsChecker constructor.
      * @param string $rootPath
+     * @param string $secretPath
      */
-    public function __construct(string $rootPath)
+    public function __construct(string $rootPath, string $secretPath)
     {
         $this->_rootPath = $rootPath;
-        $this->check($rootPath);
+        $this->_secretPath = $secretPath;
+        $this->check();
     }
 
     /**
@@ -72,9 +80,9 @@ class SecretsChecker extends ProjectChecker
      * get secrets from secrets.json
      * @return mixed
      */
-    private static function _getSecrets()
+    private function _getSecrets()
     {
-        return json_decode(file_get_contents("secrets/secrets.json"), true)['data'];
+        return json_decode(file_get_contents($this->_secretPath), true)['data'];
     }
 
     /**
@@ -83,7 +91,7 @@ class SecretsChecker extends ProjectChecker
      */
     private function _checkSecrets(array $pathAndSecrets)
     {
-        $secretsJson = self::_getSecrets();
+        $secretsJson = $this->_getSecrets();
         $allProjectSecrets = [];
         foreach ($pathAndSecrets as $path => $secrets) {
             if (empty($secrets)) {

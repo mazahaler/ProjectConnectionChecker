@@ -7,7 +7,7 @@ Requirements:
 -------------
 
 
-- PHP 7.0. and higher;
+- PHP 7.4. and higher;
 - Yii 2.0. and higher.
 
 
@@ -45,14 +45,15 @@ use mazahaler\ProjectConnectionChecker\ProjectConnectionChecker;
 /**
 * Check secrets, db connections and mailing
  * @param 1: Root path of the project
+ * @param 2: Path to secrets.json
  * @param 2: \yii\swiftmailer\Mailer class
  * @param 3: Array of db connections in format: ['Your connection title(used for error output)' => [Instance of \yii\db\Connection | \yii\mongodb\Connection]]
  */
-ProjectConnectionChecker::checkAll(getcwd(), \Yii::$app->mailer, ['mysql' => [\Yii::$app->db], 'mongodb' => [\Yii::$app->mongodb]]);
+ProjectConnectionChecker::checkAll(\Yii::getAlias('@app'), \Yii::getAlias('@app') . '/secrets/secrets.json', \Yii::$app->mailer, ['mysql' => [\Yii::$app->db], 'mongodb' => [\Yii::$app->mongodb]]);
 
 // OR check it separately:
 
-ProjectConnectionChecker::checkSecrets(getcwd());
+ProjectConnectionChecker::checkSecrets(\Yii::getAlias('@app'), \Yii::getAlias('@app') . '/secrets/secrets.json');
 
 ProjectConnectionChecker::checkMailing(\Yii::$app->mailer);
 
