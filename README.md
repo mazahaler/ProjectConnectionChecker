@@ -46,8 +46,8 @@ use mazahaler\ProjectConnectionChecker\ProjectConnectionChecker;
 * Check secrets, db connections and mailing
  * @param 1: Root path of the project
  * @param 2: Path to secrets.json
- * @param 2: \yii\swiftmailer\Mailer class
- * @param 3: Array of db connections in format: ['Your connection title(used for error output)' => [Instance of \yii\db\Connection | \yii\mongodb\Connection]]
+ * @param 3: \yii\swiftmailer\Mailer class
+ * @param 4: Array of db connections in format: ['Your connection title(used for error output)' => [Instance of \yii\db\Connection | \yii\mongodb\Connection]]
  */
 ProjectConnectionChecker::checkAll(\Yii::getAlias('@app'), \Yii::getAlias('@app') . '/secrets/secrets.json', \Yii::$app->mailer, ['mysql' => [\Yii::$app->db], 'mongodb' => [\Yii::$app->mongodb]]);
 
